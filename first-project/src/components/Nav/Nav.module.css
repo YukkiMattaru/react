@@ -12,8 +12,13 @@
 .item a {
   color: #95ADA5;
   text-decoration: none;
+  transition: color .3s;
 }
 
 .item.active a {
   color: #95ADF5;
+}
+
+.item a:hover {
+  color: #5b68ad;
 }
