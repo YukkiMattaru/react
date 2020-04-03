@@ -2,11 +2,13 @@
   grid-area: nav;
   background-color: #D7FAE7;
   text-align: center;
+  display: block;
 }
 
 .item {
   color: white;
-  padding-top: 5px;
+  margin: 10px auto;
+  padding: 5px 0;
 }
 
 .item a {
@@ -15,8 +17,8 @@
   transition: color .3s;
 }
 
-.item.active a {
-  color: #95ADF5;
+.item a.active {
+  color: #5b64f5;
 }
 
 .item a:hover {
