@@ -7,14 +7,17 @@
 
 .item {
   color: white;
-  margin: 10px auto;
-  padding: 5px 0;
+  margin: 3px auto;
+  display: block;
 }
 
 .item a {
   color: #95ADA5;
   text-decoration: none;
   transition: color .3s;
+  display: block;
+  padding: 10px 0;
+  outline: none;
 }
 
 .item a.active {
@@ -24,3 +27,14 @@
 .item a:hover {
   color: #5b68ad;
 }
+
+.item.settings::before {
+  display: block;
+  content: '';
+  width: 75%;
+  height: 1px;
+  margin: 0 auto;
+  background-color: #dfe2e8;
+  transition: all .1s linear;
+}
+

@@ -1,0 +1,36 @@
+.avatar {
+    display: block;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.dialog a {
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+    margin-bottom: 1px;
+    color: black;
+}
+
+.dialog a:hover {
+    background: #dce5e1;
+}
+
+.active {
+    background: #e4ede9;
+}
+
+.dialog {
+    display: block;
+}
+
+.name {
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto 10px;
+}
+
+.active .name {
+    color: #5b64f5;
+}

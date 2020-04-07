@@ -8,13 +8,13 @@ const MyPosts = (props) => {
 
     return (
         <div className={s.MyPosts}>
-            <h3>My posts</h3>
+            <h3>Мои посты</h3>
             <div>
                 <div>
                     <textarea></textarea>
                 </div>
                 <div>
-                    <button>Add post</button>
+                    <button>Добавить пост</button>
                 </div>
             </div>
             <div className={s.posts}>

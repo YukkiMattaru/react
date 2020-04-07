@@ -5,7 +5,7 @@ const Post = (props) => {
   return (
     <div className={s.item}>
       {props.text}
-      <div className={s.button}><button>Like [{props.like_count}]</button></div>
+      <div className={s.button}><button>Нравится ({props.like_count})</button></div>
     </div>
   );
 }

@@ -4,25 +4,16 @@
 }
 
 .dialogsItems {
-    padding: 10px;
+    padding: 5px;
+    border-right: 1px solid #e4ede9;
 }
 
 .dialog {
 
 }
 
-.dialogsItems .active {
-    color: #5b64f5;
-}
-
 .messages {
     padding: 10px;
 }
 
-.message {
 
-}
-
-.dialog a {
-    text-decoration: none;
-}
