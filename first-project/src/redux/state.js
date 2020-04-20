@@ -34,45 +34,48 @@ let store = {
             newPostText: ''
         }
     },
-    getState() {
-        return this._state;
-    },
     _callSubscriber() {
         console.log('State changed');
     },
-    addPost() {
-        if(this._state.profilePage.newPostText) {
-            let newPost = {
-                text: this._state.profilePage.newPostText,
-                id: 10,
-                likesCount: 0
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state);
-        }
-    },
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state);
-    },
-    addMessage() {
-        if(this._state.messagesPage.newMessageText) {
-            let newMessage = {
-                id: 5,
-                message: this._state.messagesPage.newMessageText
-            };
-            this._state.messagesPage.messages.push(newMessage);
-            this._state.messagesPage.newMessageText = '';
-            this._callSubscriber(this._state);
-        }
-    },
-    updateNewMessageText(newText) {
-        this._state.messagesPage.newMessageText = newText;
-        this._callSubscriber(this._state);
+    getState() {
+        return this._state;
     },
     subscribe(observer) {
         this._callSubscriber = observer;
+    },
+
+    dispatch(action) { // { type: 'ADD-POST' }
+        if (action.type === 'ADD-POST') {
+            if(this._state.profilePage.newPostText) {
+                let newPost = {
+                    text: this._state.profilePage.newPostText,
+                    id: 10,
+                    likesCount: 0
+                };
+                this._state.profilePage.posts.push(newPost);
+                this._state.profilePage.newPostText = '';
+                this._callSubscriber(this._state);
+            }
+        }
+        else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        }
+        else if (action.type === 'ADD-MESSAGE') {
+            if(this._state.messagesPage.newMessageText) {
+                let newMessage = {
+                    id: 5,
+                    message: this._state.messagesPage.newMessageText
+                };
+                this._state.messagesPage.messages.push(newMessage);
+                this._state.messagesPage.newMessageText = '';
+                this._callSubscriber(this._state);
+            }
+        }
+        else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            this._state.messagesPage.newMessageText = action.newText;
+            this._callSubscriber(this._state);
+        }
     }
 };
 
