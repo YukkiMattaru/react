@@ -37,22 +37,6 @@ let store = {
             newPostText: ''
         }
     },
-    _callSubscriber() {
-        console.log('State changed');
-    },
-    getState() {
-        return this._state;
-    },
-    subscribe(observer) {
-        this._callSubscriber = observer;
-    },
-
-    dispatch(action) {
-        debugger;
-        this._state.profilePage = profileReducer(this._state.profilePage, action);
-        this._state.messagesPage = dialogsReducer(this._state.messagesPage, action);
-        this._callSubscriber(this._state);
-    }
 };
 
 

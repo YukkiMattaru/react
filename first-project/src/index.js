@@ -5,17 +5,20 @@ import store from "./redux/redux-store";
 import ReactDOM from 'react-dom';
 import App from './App';
 
-let rerenderEntireTree = (state) => {
+let rerenderEntireTree = (store) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App state={store.getState()} dispatch={store.dispatch.bind(store)}/>
+            <App store={store}/>
         </React.StrictMode>,
         document.getElementById('root')
     );
 };
 
-rerenderEntireTree(store.getState());
+rerenderEntireTree(store);
 
-store.subscribe(rerenderEntireTree);
+store.subscribe(() => {
+    //let state = store.getState();
+    rerenderEntireTree(store);
+});
 
 serviceWorker.unregister();

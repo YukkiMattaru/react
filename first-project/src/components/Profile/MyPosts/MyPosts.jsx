@@ -1,19 +1,19 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/proReducer";
 
 const MyPosts = (props) => {
-
+console.log(props);
+debugger
     let postsComponents = props.posts.map(post => <Post text={post.text} like_count={post.likesCount}/>);
 
-    let addPost = () => {
-        props.dispatch(addPostActionCreator())
+    let onAddPost = () => {
+        props.addPost();
     };
 
     let onPostChange = (e) => {
         let text = e.target.value;
-        props.dispatch(updateNewPostTextActionCreator(text));
+        props.updateNewPostText(text);
     };
 
     return (
@@ -24,7 +24,7 @@ const MyPosts = (props) => {
                     <textarea onChange={ onPostChange } value={ props.newPostText }/>
                 </div>
                 <div>
-                    <button onClick={ addPost }>Добавить пост</button>
+                    <button onClick={ onAddPost }>Добавить пост</button>
                 </div>
             </div>
             <div className={s.posts}>
