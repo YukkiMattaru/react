@@ -1,14 +1,23 @@
 import React from "react";
 import s from './ProfileInfo.module.css';
+import Preloader from "../../common/Preloader/Preloader";
+import userPhoto from "../../../assets/images/user.png"
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+
+    if (!props.profile) {
+        return <Preloader />
+    }
+
     return (
         <div className={s.profileInfoBlock}>
             <div>
-                <img src="https://sun9-55.userapi.com/impg/c853516/v853516912/17ee97/9A_8CGsM1aI.jpg?size=200x0&quality=90&sign=6b9ca5b5baf7fbf2ec84d7e6a1f06228" alt="avatar" />
+                <img src={props.profile.photos.large || userPhoto} alt="avatar" />
             </div>
             <div className={s.descriptionBlock}>
-                За кого ты меня держишь?
+                <p>{props.profile.fullName}</p>
+                <p>{props.profile.lookingForAJobDescription || ""}</p>
+                <p>{props.profile.contacts.github || ""}</p>
             </div>
         </div>
     );
