@@ -12,7 +12,7 @@ const Nav = () => {
                 <NavLink activeClassName={s.active} to='/dialogs'>Сообщения</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink activeClassName={s.active} to='/news'>Новости</NavLink>
+                <NavLink activeClassName={s.active} exact to='/'>Новости</NavLink>
             </div>
             <div className={s.item}>
                 <NavLink activeClassName={s.active} to='/music'>Музыка</NavLink>

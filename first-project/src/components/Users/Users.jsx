@@ -13,7 +13,7 @@ let Users = (props) => {
         <div className={styles.users}>
             <div>
                 {pages.map(p => {
-                    return <span
+                    return <span key={p}
                         className={`${styles.page_number} ${props.currentPage === p ? styles.selectedPage : ""}`}
                         onClick={() => { props.onPageChanged(p) }}>{p}</span>
                 })}
@@ -27,9 +27,8 @@ let Users = (props) => {
                           </NavLink>
                           </div>
                       <div>
-                          {u.followed ? <button onClick={() => props.unfollow(u.id)}>Отписаться</button>
-                              : <button onClick={() => props.follow(u.id)}>Подписаться</button>}
-
+                          {u.followed ? <button disabled={props.isFollowingInProgress.some(id => id === u.id)} onClick={() => {props.unfollow(u.id)}}>Отписаться</button>
+                              : <button disabled={props.isFollowingInProgress.some(id => id === u.id)} onClick={() => {props.follow(u.id)}}>Подписаться</button>}
                       </div>
                   </span>
                     <span>

@@ -2,6 +2,7 @@ import React from "react";
 import s from './ProfileInfo.module.css';
 import Preloader from "../../common/Preloader/Preloader";
 import userPhoto from "../../../assets/images/user.png"
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
 
@@ -16,7 +17,7 @@ const ProfileInfo = (props) => {
             </div>
             <div className={s.descriptionBlock}>
                 <p>{props.profile.fullName}</p>
-                <p>{props.profile.lookingForAJobDescription || ""}</p>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                 <p>{props.profile.contacts.github || ""}</p>
             </div>
         </div>

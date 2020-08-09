@@ -9,3 +9,15 @@
 .header img {
   width: 30px;
 }
+
+.authBlock {
+  float: right;
+  margin-right: 20px;
+  color: #95ADA5;
+  font-weight: bold;
+}
+
+.authBlock a {
+  text-decoration: none;
+  color: #95ADA5
+}

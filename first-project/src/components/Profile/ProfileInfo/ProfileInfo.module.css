@@ -1,7 +1,7 @@
 .profileInfoBlock {
     display: grid;
     grid-template-columns: 3fr 10fr;
-    padding: 10px;
+    padding: 5px;
     border-bottom: 2px solid #dfe2e8;
 }
 
@@ -10,5 +10,5 @@
 }
 
 .descriptionBlock {
-    margin: auto 0;
+    margin: auto 20px;
 }
