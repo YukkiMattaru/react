@@ -10,3 +10,9 @@
 .formControl.error span {
     color: red;
 }
+
+.formSummaryError {
+    padding: 1px;
+    color: rosybrown;
+    display: inline-block;
+}
