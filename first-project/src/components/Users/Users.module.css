@@ -2,15 +2,6 @@
     width: 100px;
 }
 
-.selectedPage {
-    font-weight: bold;
-}
-
-.page_number {
-    cursor: pointer;
-    padding: 2px;
-}
-
 .users {
     margin-left: 10px;
 }

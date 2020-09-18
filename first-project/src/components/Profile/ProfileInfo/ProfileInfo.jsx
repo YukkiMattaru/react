@@ -4,21 +4,29 @@ import Preloader from "../../common/Preloader/Preloader";
 import userPhoto from "../../../assets/images/user.png"
 import ProfileStatus from "./ProfileStatus";
 
-const ProfileInfo = (props) => {
+const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
 
-    if (!props.profile) {
+    if (!profile) {
         return <Preloader />
+    }
+
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files.length) {
+            savePhoto(e.target.files[0]);
+        }
     }
 
     return (
         <div className={s.profileInfoBlock}>
             <div>
-                <img src={props.profile.photos.large || userPhoto} alt="avatar" />
+                <img src={profile.photos.large || userPhoto} alt="avatar" />
+                { isOwner &&
+                <input type={"file"} onChange={onMainPhotoSelected} /> }
             </div>
             <div className={s.descriptionBlock}>
-                <p>{props.profile.fullName}</p>
-                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
-                <p>{props.profile.contacts.github || ""}</p>
+                <p>{profile.fullName}</p>
+                <ProfileStatus status={status} updateStatus={updateStatus}/>
+                <p>{profile.contacts.github || ""}</p>
             </div>
         </div>
     );

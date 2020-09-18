@@ -1,11 +1,11 @@
-const ADD_MESSAGE = 'ADD-MESSAGE';
+const ADD_MESSAGE = 'dialogs/ADD-MESSAGE';
 
 let initialState = {
     dialogs: [
         {
             id: 1,
             name: 'Даша',
-            src: 'https://sun1-26.userapi.com/1Lue-cqED40QRvpORb2us_46RUxG7XCdIFLc-g/6KHeLg2hmHk.jpg?ava=1'
+            src: 'https://sun1-90.userapi.com/c837229/v837229771/1a49c/yId4U2ZdDOk.jpg'
         },
         {id: 2, name: 'Валя', src: 'https://sun9-35.userapi.com/c205620/v205620511/afa09/T8eHYI2TNFU.jpg?ava=1'},
         {
