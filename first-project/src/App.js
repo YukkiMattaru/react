@@ -16,7 +16,7 @@ import UsersContainer from "./components/Users/UsersContainer";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
-
+alert("hello")
 class App extends React.Component {
     componentDidMount() {
         this.props.initializeApp();
