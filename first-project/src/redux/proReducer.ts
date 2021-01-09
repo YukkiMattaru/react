@@ -1,4 +1,4 @@
-import {profileAPI} from "../api/api";
+import {profileAPI, ResultCodesEnum} from "../api/api";
 import store, {AppStateType} from "./store";
 import {stopSubmit, StopSubmitAction} from "redux-form";
 import {PostType, ProfileType, PhotosType} from "../types/types";
@@ -93,19 +93,19 @@ export const deletePost = (postID: number): DeletePostActionType => ({type: DELE
 export const savePhotoSuccess = (photos: PhotosType): SavePhotoSuccessType => ({type: SAVE_PHOTO_SUCCESS, photos})
 
 export const getUserProfile = (userID: number | null): ThunkType => async (dispatch) => {
-    let response = await profileAPI.getProfile(userID)
-    dispatch(setUserProfile(response.data))
+    let data = await profileAPI.getProfile(userID)
+    dispatch(setUserProfile(data))
 }
 
 export const getStatus = (userID: number | null): ThunkType => async (dispatch) => {
-    let response = await profileAPI.getStatus(userID)
-    dispatch(setStatus(response.data))
+    let data = await profileAPI.getStatus(userID)
+    dispatch(setStatus(data))
 
 }
 
 export const updateStatus = (status: string): ThunkType => async (dispatch) => {
-    let response = await profileAPI.updateStatus(status)
-    if (response.data.resultCode === 0) {
+    let data = await profileAPI.updateStatus(status)
+    if (data.resultCode === ResultCodesEnum.Success) {
         dispatch(setStatus(status))
     } else {
         alert('Введите валидный статус');
@@ -114,15 +114,15 @@ export const updateStatus = (status: string): ThunkType => async (dispatch) => {
 }
 
 export const savePhoto = (file: File): ThunkType => async (dispatch) => {
-    let response = await profileAPI.savePhoto(file)
-    if (response.data.resultCode === 0) {
-        dispatch(savePhotoSuccess(response.data.data.photos))
+    let data = await profileAPI.savePhoto(file)
+    if (data.resultCode === ResultCodesEnum.Success) {
+        dispatch(savePhotoSuccess(data.data.photos))
     }
 }
 
 export const saveProfile = (formData: ProfileType): ThunkType => async (dispatch) => {
     let response = await profileAPI.saveProfile(formData)
-    if (response.data.resultCode === 0) {
+    if (response.data.resultCode === ResultCodesEnum.Success) {
         dispatch(getUserProfile(store.getState().auth.userId))
     } else {
         dispatch(stopSubmit("editProfile", {_error: response.data.messages[0]}))

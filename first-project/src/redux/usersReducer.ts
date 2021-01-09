@@ -1,4 +1,4 @@
-import {usersAPI} from "../api/api";
+import {ResultCodesEnum, usersAPI} from "../api/api";
 import {updateObjectInArray} from "../utils/object-helper";
 import {UserType} from "../types/types";
 import {Action, Dispatch} from "redux";
@@ -141,7 +141,7 @@ const followUnfollowFlow = async (dispatch: DispatchType, userID: number,
 {
     dispatch(toggleIsFollowingInProgress(true, userID))
     let resultCode = await apiMethod(userID);
-    if (resultCode === 0) {
+    if (resultCode === ResultCodesEnum.Success) {
         dispatch(actionCreator(userID))
     }
     dispatch(toggleIsFollowingInProgress(false, userID))
