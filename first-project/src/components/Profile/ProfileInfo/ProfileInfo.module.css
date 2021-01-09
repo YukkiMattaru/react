@@ -6,9 +6,13 @@
 }
 
 .profileInfoBlock img {
-    width: 200px;
+
 }
 
 .descriptionBlock {
     margin: auto 20px;
+}
+
+.contact {
+    padding-left: 30px;
 }

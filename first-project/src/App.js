@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Nav from './components/Nav/Nav';
-import {BrowserRouter, Route, withRouter} from "react-router-dom";
+import {Switch, BrowserRouter, Route, withRouter} from "react-router-dom";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {connect, Provider} from "react-redux";
@@ -20,6 +20,17 @@ import Settings from "./components/Settings/Settings";
 class App extends React.Component {
     componentDidMount() {
         this.props.initializeApp();
+        window.addEventListener("unhandledrejection", (promiseRejectionEvent) => {
+            alert("Произошла какая-то ошибка на сервере");
+            console.error(promiseRejectionEvent);
+        })
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('unhandledrejection', (promiseRejectionEvent) => {
+            alert("Произошла какая-то ошибка на сервере");
+            console.error(promiseRejectionEvent);
+        });
     }
 
     render() {
@@ -32,13 +43,16 @@ class App extends React.Component {
                 <HeaderContainer/>
                 <Nav/>
                 <div className='app-wrapper-content'>
-                    <Route path='/dialogs' render={() => <DialogsContainer />}/>
-                    <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
-                    <Route exact path='/' render={() => <News/>}/>
-                    <Route path='/users' render={() => <UsersContainer/>}/>
-                    <Route path='/music' render={() => <Music/>}/>
-                    <Route path='/settings' render={() => <Settings/>}/>
-                    <Route path='/login' render={() => <Login/>}/>
+                    <Switch>
+                        <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                        <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
+                        <Route exact path='/' render={() => <News/>}/>
+                        <Route path='/users' render={() => <UsersContainer/>}/>
+                        <Route path='/music' render={() => <Music/>}/>
+                        <Route path='/settings' render={() => <Settings/>}/>
+                        <Route path='/login' render={() => <Login/>}/>
+                        <Route path='*' render={() => <div>404 not found</div>} />
+                    </Switch>
                 </div>
             </div>
         );
@@ -56,7 +70,7 @@ let AppContainer = compose(
 let SocialApp = () => {
     return <BrowserRouter>
         <Provider store={store}>
-            <AppContainer />
+            <AppContainer/>
         </Provider>
     </BrowserRouter>
 }
